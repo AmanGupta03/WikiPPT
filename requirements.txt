@@ -1,0 +1,4 @@
+gensim
+wikipedia-api
+spacy
+nltk
