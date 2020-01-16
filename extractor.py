@@ -1,3 +1,25 @@
+"""
+return dictionary object 'data' as follows -:
+{
+    'topic': 'Main Heading'
+    'no_of_head': 'No. of Sub Headings'
+    'introduction': 'One line description along with heading'
+    #list of subheadings
+    'section': [ 
+        {
+            'heading':  'sub Heading title'
+            #list of points 
+            'content': [ 
+                {
+                    'title': 'name of sub-sub heading, can be empty'
+                    'desc': 'list of points from sub-sub-heading'
+                }
+            ]
+        }
+    ]
+}
+"""
+
 import summarizer
 import wikipediaapi
 import json
@@ -22,7 +44,7 @@ def data_for_ppt(content, slide_per_head=1):
     return data
 
 data = {}
-topic = 'Operating System'  #input()
+topic = 'Operating System'  # to be input
 
 print('Fetching Content...')
 wiki = wikipediaapi.Wikipedia(language='en', extract_format=wikipediaapi.ExtractFormat.WIKI)
@@ -36,4 +58,4 @@ data['no_of_head'] = len(content.sections)
 data['introduction'] = summarizer.extract_intro(content.text)
 data['sections'] = data_for_ppt(content)
 
-print(json.dumps(data, indent=4))
+print(json.dumps(data, indent=4)) #json to pretiffy
